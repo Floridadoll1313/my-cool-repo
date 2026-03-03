@@ -2,43 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+/* -------------------------------------------------------
+   🌊 OCEAN TIDE DROP — THEME TOKENS
+------------------------------------------------------- */
 :root {
   --background: #0a192f;
+  --background-alt: #0f233f;
   --cyan: #22d3ee;
+  --cyan-glow: rgba(34, 211, 238, 0.55);
   --gold: #facc15;
+  --gold-glow: rgba(250, 204, 21, 0.45);
+  --pink: #ff4ecd;
+  --pink-glow: rgba(255, 78, 205, 0.45);
+
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+
+  --radius: 14px;
+  --transition: 240ms ease;
 }
 
+/* -------------------------------------------------------
+   🌊 GLOBAL RESET + BASE
+------------------------------------------------------- */
 body {
   margin: 0;
   background-color: var(--background);
-  color: white;
+  color: var(--text-primary);
   font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* --- THE NEURAL TICKER ANIMATION --- */
-@keyframes ticker {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+/* -------------------------------------------------------
+   🌊 RESPONSIVE TYPE SYSTEM
+------------------------------------------------------- */
+h1 {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 700;
 }
 
-.ticker-wrapper {
-  display: flex;
-  width: 100%;
+h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 600;
 }
 
-.ticker-content {
-  display: inline-block;
-  white-space: nowrap;
-  animation: ticker 40s linear infinite;
-  will-change: transform;
-}
-
-/* --- CUSTOM CYBERPUNK SCROLLBAR --- */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #0a192f; }
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+p {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1
