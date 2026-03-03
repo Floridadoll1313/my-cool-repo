@@ -1,16 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx,ts,tsx}"
+  ],
   theme: {
-    extend: {
-      colors: {
-        neon: {
-          blue: "#00eaff",
-          pink: "#ff00ea",
-          green: "#00ff9d",
-        },
-      },
-    },
+    extend: {},
   },
   plugins: [],
-}
+};
