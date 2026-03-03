@@ -1,3 +1,4 @@
+// src/App.jsx
 import { Routes, Route } from "react-router-dom";
 
 // Layout
@@ -39,5 +40,4 @@ export default function App() {
         <Route path="/tools" element={<ThirdPartyTools />} />
       </Routes>
     </Layout>
-  );
-}
+ 
