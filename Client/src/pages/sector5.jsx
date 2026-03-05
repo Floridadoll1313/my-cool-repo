@@ -1,30 +1,17 @@
 import React from "react";
-import Layout from "../components/Layout";
-import "../components/Home.css";
 
-const Sector5: React.FC = () => {
+export default function Sector5() {
   return (
-    <Layout>
-      <div className="page-container">
-        <section className="hero-section">
-          <h1 className="hero-title">Sector 5: The Deep Archives</h1>
-          <p className="hero-subtitle">
-            Knowledge preserved beneath the tides.
-          </p>
-        </section>
-
-        <div className="portal-card">
-          <h2 className="portal-title">Unlock the Records</h2>
-          <p className="portal-text">
-            The Deep Archives hold the stories, lessons, and discoveries of
-            survivors who came before you. Their wisdom is your advantage.
-          </p>
-
-          <button className="portal-button">Enter the Archives</button>
-        </div>
-      </div>
-    </Layout>
+    <div className="sector-page" data-reveal>
+      <h1>Sector 5: The Observatory</h1>
+      <p>
+        High above the shoreline, the Observatory watches the shifting tides of the realm.
+        Here, patterns sharpen into clarity — constellations of logic, intuition, and signal.
+      </p>
+      <p>
+        This is where you begin to see the island not as terrain, but as a living system.
+        Every insight becomes a lens. Every lens becomes a tool.
+      </p>
+    </div>
   );
-};
-
-export default Sector5;
+}

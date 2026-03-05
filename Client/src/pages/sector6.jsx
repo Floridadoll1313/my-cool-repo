@@ -1,30 +1,19 @@
 import React from "react";
-import Layout from "../components/Layout";
-import "../components/Home.css";
 
-const Sector6: React.FC = () => {
+export default function Sector6() {
   return (
-    <Layout>
-      <div className="page-container">
-        <section className="hero-section">
-          <h1 className="hero-title">Sector 6: The Challenge Arena</h1>
-          <p className="hero-subtitle">
-            Only those who face the storm rise above it.
-          </p>
-        </section>
-
-        <div className="portal-card">
-          <h2 className="portal-title">Face the Trials</h2>
-          <p className="portal-text">
-            The Arena tests your adaptability, creativity, and resilience. Each
-            challenge pushes you closer to mastery.
-          </p>
-
-          <button className="portal-button">Begin Trial</button>
-        </div>
-      </div>
-    </Layout>
+    <div className="sector-page" data-reveal>
+      <h1>Sector 6: The Forge of Echoes</h1>
+      <p>
+        Deep within the island’s core lies the Forge — a chamber where sound,
+        memory, and intention collide. Every action you’ve taken reverberates
+        here, shaping the tools you’ll carry into the final sectors.
+      </p>
+      <p>
+        This is where creation becomes consequence.  
+        Patterns you’ve learned return as echoes, sharpening your instincts and
+        revealing the deeper architecture of Ocean Tide Drop.
+      </p>
+    </div>
   );
-};
-
-export default Sector6;
+}
