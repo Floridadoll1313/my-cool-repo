@@ -1,28 +1,48 @@
 import { useState, useEffect } from 'react';
 
-export const useSubscription = (stripeCustomerId) => {
+/**
+ * Hook to verify Stripe Subscription status.
+ * @param {string} customerId - The Stripe Customer ID.
+ * @returns {object} { isFounder, loading, error }
+ */
+export const useSubscriptionVerification = (customerId) => {
   const [isFounder, setIsFounder] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchSubscription = async () => {
+    if (!customerId) {
+      setLoading(false);
+      return;
+    }
+
+    const verifyStatus = async () => {
       try {
-        // Replace with your actual backend route that calls the Stripe API
-        const response = await fetch(`/api/check-subscription?customerId=${stripeCustomerId}`);
-        const data = await response.json();
+        setLoading(true);
+        // Replace '/api/verify-subscription' with your actual server endpoint
+        // that securely calls Stripe's API to retrieve the subscription
+        const response = await fetch(`/api/verify-subscription?customerId=${customerId}`);
         
-        // Check if status is active and metadata contains your custom 'founder' flag
-        if (data.status === 'active' && data.metadata.tier === 'founder') {
-          setIsFounder(true);
-        }
+        if (!response.ok) throw new Error('Failed to fetch subscription status');
+        
+        const data = await response.json();
+
+        // Business Logic: Only 'active' subscriptions with the 'founder' metadata
+        // are granted access to the 'Founder' tier content.
+        const isActive = data.status === 'active';
+        const isFounderTier = data.metadata?.tier === 'founder';
+
+        setIsFounder(isActive && isFounderTier);
       } catch (err) {
-        console.error("Subscription check failed", err);
+        console.error("Stripe verification error:", err);
+        setError(err);
       } finally {
         setLoading(false);
       }
     };
-    fetchSubscription();
-  }, [stripeCustomerId]);
 
-  return { isFounder, loading };
+    verifyStatus();
+  }, [customerId]);
+
+  return { isFounder, loading, error };
 };
