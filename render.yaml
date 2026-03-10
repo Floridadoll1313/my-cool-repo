@@ -1,15 +1,11 @@
 services:
-  # Frontend (React + Vite)
-  - type: static
-    name: ai-surfer-client
-    env: static
-    buildCommand: "cd Client && npm install && npm run build"
-    publishDir: "Client/dist"
-
-  # Backend (Node/Express)
   - type: web
-    name: ai-surfer-server
-    env: node
-    plan: free
-    buildCommand: "cd server && npm install"
-    startCommand: "node server/server.js"
+    name: ai-surfer-survivor-new
+    runtime: node
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist # Change to 'build' if you are not using Vite
+    routes:
+      # This redirect rule is CRITICAL for React Router to work on refresh
+      - type: rewrite
+        source: /*
+        destination: /index.html
