@@ -1,4 +1,29 @@
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Island from './pages/Island';
+import Arena from './pages/Arena';
+// Import other pages...
+
+function App() {
+  return (
+    <Router>
+      <div className="bg-black min-h-screen text-white">
+        {/* The Global Navbar provides the missing navigation */}
+        <Navbar />
+        
+        <Routes>
+          <Route path="/" element={<Island />} />
+          <Route path="/island" element={<Island />} />
+          <Route path="/arena" element={<Arena />} />
+          {/* Add all 14 built out routes here */}
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;import { Routes, Route } from "react-router-dom";
 
 // Layout
 import Layout from "./components/Layout";
