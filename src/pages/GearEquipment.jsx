@@ -1,12 +1,15 @@
-```jsx
 import React from 'react';
 import { useProgression } from '../hooks/ProgressionContext';
 import { useSurfingEngine } from '../hooks/useSurfingEngine';
 
 const GearEquipment = () => {
   const { progression } = useProgression();
-  // Animation 2: Physics-based movement for the gear cards
   const { y, tilt } = useSurfingEngine(0.6);
+
+  // Pre-calculate styles to keep the JSX clean and avoid parser errors
+  const transformStyle = { 
+    transform: `translateY(${y * 0.5}px) rotate(${tilt / 15}deg)` 
+  };
 
   const gearItems = [
     { id: 'b-01', name: 'NEON_CARVER', type: 'Board', stat: '+15 Speed', color: 'border-neon-blue', level: 1 },
@@ -19,7 +22,7 @@ const GearEquipment = () => {
       {/* Background Physics Layer */}
       <div 
         className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{ transform: `translateY(${y * 0.5}px) rotate(${tilt / 15}deg)` }}
+        style={transformStyle}
       >
         <div className="w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(0,234,255,0.05)_50%,transparent_75%)] bg-[length:200%_200%] animate-pulse" />
       </div>
@@ -44,7 +47,7 @@ const GearEquipment = () => {
                 className={`relative p-8 border-2 transition-all duration-500 ${item.color} ${
                   isLocked ? 'opacity-30 grayscale' : 'hover:scale-105 hover:shadow-[0_0_30px_rgba(0,234,255,0.3)]'
                 }`}
-                style={{ transform: `translateY(${y * 0.5}px) rotate(${tilt / 15}deg)` }}
+                style={transformStyle}
               >
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">{item.type}</span>
