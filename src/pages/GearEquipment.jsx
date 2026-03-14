@@ -44,7 +44,7 @@ const GearEquipment = () => {
                 className={`relative p-8 border-2 transition-all duration-500 ${item.color} ${
                   isLocked ? 'opacity-30 grayscale' : 'hover:scale-105 hover:shadow-[0_0_30px_rgba(0,234,255,0.3)]'
                 }`}
-                style={{ transform: `translateY(${y}px) rotate(${tilt / 10}deg)` }}
+                style={{ transform: `translateY(${y * 0.5}px) rotate(${tilt / 15}deg)` }}
               >
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">{item.type}</span>
