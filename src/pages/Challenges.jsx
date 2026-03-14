@@ -1,4 +1,4 @@
-mport { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { animation2 } from '../animations/variants';
 
 const Challenges = () => (
